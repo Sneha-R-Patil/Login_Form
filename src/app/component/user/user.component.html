@@ -1,0 +1,30 @@
+<!-- <p>user works!</p> -->
+<div class="heading">
+    <h2>Welcome {{activeUserName}}</h2>
+</div>
+<div class="center">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+        <div>
+            <select  name="plan"  ngModel  required>
+                <option value="" disabled selected hidden>--Select Plan--</option>
+                <option *ngFor="let plan of planName">{{plan}}</option>
+            </select>
+        </div>
+        <br><br>
+        <div>
+            <label><b>Enter Amount:</b></label><br>
+            <input type="text" name="amount"  #amount="ngModel"  ngModel required> <br>
+            <span class="error1" *ngIf=" amount.invalid && amount.touched">   Fill the amount  </span> <br> <br>
+        </div>
+        <br>
+        <div>
+            <button [disabled]="userForm.invalid" type="submit">Submit Amount</button>
+            <div *ngIf="selectedPlan!=undefined && selectedAmount!=undefined">
+                <h5 style="color: green;"> Your Transcation with {{selectedPlan}} and with amount{{selectedAmount}} is Successful</h5>
+           </div>
+        </div>
+    </form>
+</div>    
+
+
+

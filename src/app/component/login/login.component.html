@@ -1,0 +1,57 @@
+<!-- <p>login works!</p> -->
+<div class="heading">
+    <h1>Login Form</h1>
+</div>
+<div class="center"> 
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+        <div>
+            <label><b>Username</b></label><br><br>
+            <input type="text" name="userName" placeholder="Enter Username"
+               ngModel required pattern="[A-Za-z0-9]*" #userName="ngModel"><br>
+            <!-- <span class="error" *ngIf="userName.invalid && userName.touched">  Username is required  </span><br><br> -->
+            <div class="error" *ngIf="userName.invalid && userName.touched">
+                <div *ngIf="userName.errors?.required">
+                    Username is required
+                </div>
+                <div *ngIf="userName.errors?.pattern">
+                    Only alphabets and numbers are allowed i.e.[A-Za-z0-9]
+                </div>
+            </div>
+        </div> <br> 
+        <div>
+            <label><b>Password</b></label><br><br>
+            <input type="password" name="password" placeholder="Enter Password"
+               ngModel required minlength="4" #password="ngModel"><br>
+            <!-- <span class="error" *ngIf="password.invalid && password.touched">  Password is required  </span>  <br><br> -->
+            <div class="error" *ngIf="userName.invalid && userName.touched">
+                <div *ngIf="userName.errors?.required">
+                    Password is required
+                </div>
+                <div *ngIf="userName.errors?.minlength">
+                    Minimum password length at least 4 charater 
+                </div>
+            </div>
+        </div><br>
+        <div>
+            <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        </div>
+</form>
+</div>
+<div class="center" *ngIf="loginInitialState">
+    <div *ngIf="loginResult; else incorrct">
+        Login Successful
+    </div>
+   
+        <ng-template  #incorrct>
+        Incorrect username and password
+        </ng-template>
+    
+</div>
+
+<!-- <div>  {{obsb}}</div> -->
+
+<!-- <div *ngFor="let list of data">
+    {{list.userName}}
+    {{list.password}}
+
+</div> -->

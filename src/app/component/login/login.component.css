@@ -1,0 +1,15 @@
+.error, .error1{
+    color: red;
+}
+.heading{
+    text-align: center;
+    margin-top: 120px;
+}
+.center{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* .center.error{
+    color: red;
+} */
